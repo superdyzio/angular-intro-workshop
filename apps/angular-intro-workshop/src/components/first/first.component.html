@@ -1,0 +1,11 @@
+<p>first works!</p>
+<button (click)="textVisible = !textVisible">toggle text</button>
+<div *ngIf="textVisible">hideable text</div>
+
+<ul>
+  <li *ngFor="let person of people; let i = index">
+    Name: {{person.name}} ({{person.age}})
+    <button (click)="removePerson(i)">X</button>
+  </li>
+</ul>
+<button (click)="addPerson()">Add Krzysio</button>
