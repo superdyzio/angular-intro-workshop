@@ -2,7 +2,9 @@
   "name": "@angular-intro-workshop/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "start": "npx nx serve angular-intro-workshop"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~18.2.0",
