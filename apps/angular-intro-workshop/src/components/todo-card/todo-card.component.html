@@ -1,0 +1,5 @@
+<div [style.border]="'4px solid black'" [style.display]="'inline-block'">
+   <h4>{{ todo().title }}</h4>
+   <input type="checkbox" [checked]="todo().completed" />
+  <button (click)="showDetails.emit(todo().id)">More...</button>
+</div>

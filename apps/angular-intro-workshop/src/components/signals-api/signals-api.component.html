@@ -1,0 +1,9 @@
+<p>signals-api works!</p>
+
+<div class='cards-container'>
+  <app-todo-card *ngFor="let todo of todos" [todo]="todo" (showDetails)="openSlideout($event)"></app-todo-card>
+</div>
+
+<div #slideout class="slideout" *ngIf="slideoutTodo() !== null" [style.right]="slideoutTodo() !== null ? '0px' : '-300px'">
+  {{ slideoutTodo() | json }}
+</div>
