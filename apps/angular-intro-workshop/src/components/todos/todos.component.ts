@@ -5,11 +5,12 @@ import { Todo } from '../../model/todo.types';
 import { FormsModule } from '@angular/forms';
 import { FilterPipe } from '../../pipes/filter.pipe';
 import { BehaviorSubject, debounceTime, fromEvent, map, startWith } from 'rxjs';
+import { MarkCompletedDirective } from '../../directives/mark-completed.directive';
 
 @Component({
   selector: 'app-todos',
   standalone: true,
-  imports: [CommonModule, FormsModule, FilterPipe],
+  imports: [CommonModule, FormsModule, FilterPipe, MarkCompletedDirective],
   providers: [ApiService],
   templateUrl: './todos.component.html',
 })
@@ -31,14 +32,21 @@ export class TodosComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    fromEvent(this.searchInput?.nativeElement, 'input').pipe(
-      debounceTime(500),
-      map((event: any) => (event.target as HTMLInputElement).value.trim()),
-      map((searchText) =>
-        this.todos.filter((todo) => todo.title.includes(searchText))
-      ),
-      startWith(this.todos)
-    )
-      .subscribe(visibleTodos => this.visibleTodosSubject$.next(visibleTodos));
+    fromEvent(this.searchInput?.nativeElement, 'input')
+      .pipe(
+        debounceTime(500),
+        map((event: any) => (event.target as HTMLInputElement).value.trim()),
+        map((searchText) =>
+          this.todos.filter((todo) => todo.title.includes(searchText))
+        ),
+        startWith(this.todos)
+      )
+      .subscribe((visibleTodos) =>
+        this.visibleTodosSubject$.next(visibleTodos)
+      );
+  }
+
+  onCheckedChange(todo: Todo, e: Event): void {
+    todo.completed = (e.target as HTMLInputElement).checked;
   }
 }
