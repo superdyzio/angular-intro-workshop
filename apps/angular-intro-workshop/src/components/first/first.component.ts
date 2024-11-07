@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TodosComponent } from '../todos/todos.component';
 
 @Component({
   selector: 'app-first',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TodosComponent],
   templateUrl: './first.component.html',
 })
 export class FirstComponent {
