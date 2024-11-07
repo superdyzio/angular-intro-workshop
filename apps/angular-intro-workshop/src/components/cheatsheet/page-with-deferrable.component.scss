@@ -1,0 +1,18 @@
+.elements {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+
+  div {
+    height: 300px;
+    width: 400px;
+  }
+}
+
+.push {
+  margin-top: 2000px;
+}

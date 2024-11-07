@@ -1,0 +1,100 @@
+<section class="elements">
+  <div data-test-id="deferred-with-count">
+    @defer (on timer(5s)) {
+    <app-fat-cat></app-fat-cat>
+    } @placeholder {
+    <div>
+      <app-placeholder [type]="'image'">
+        Cats will load in: <app-count-down [count]="5"></app-count-down>s
+      </app-placeholder>
+    </div>
+    } @loading {
+    <app-loading></app-loading>
+    } @error {
+    <div>Error loading component</div>
+    }
+  </div>
+
+  <div>
+    @defer (on hover) {
+    <app-bar-chart></app-bar-chart>
+    } @placeholder {
+    <app-placeholder [type]="'barChart'">Hover me to load</app-placeholder>
+    } @loading {
+    <app-loading></app-loading>
+    } @error {
+    <div>Error loading component</div>
+    }
+  </div>
+
+  <div>
+    @defer (on interaction) {
+    <app-polar-chart></app-polar-chart>
+    } @placeholder {
+    <app-placeholder [type]="'polarChart'">
+      <button>Click me to load</button>
+    </app-placeholder>
+    } @loading {
+    <app-loading></app-loading>
+    } @error {
+    <div>Error loading component</div>
+    }
+  </div>
+
+  <div>
+    @defer (on interaction) {
+    <app-long-loading></app-long-loading>
+    } @placeholder {
+    <app-placeholder [type]="'image'">
+      <button>Click me to load long loading component</button>
+    </app-placeholder>
+    } @loading {
+    <app-loading></app-loading>
+    } @error {
+    <div>Error loading component</div>
+    }
+  </div>
+
+  <div>
+    @defer (on idle) {
+    <app-random-fox></app-random-fox>
+    } @placeholder {
+    <app-placeholder [type]="'image'">
+      Random fox will load on idle
+    </app-placeholder>
+    } @loading {
+    <app-loading></app-loading>
+    } @error {
+    <div>Error loading component</div>
+    }
+  </div>
+
+  <div>
+    @defer {
+    <app-random-fox></app-random-fox>
+    } @placeholder {
+    <app-placeholder [type]="'image'">
+      Random fox fill appear here
+    </app-placeholder>
+    } @loading {
+    <app-loading></app-loading>
+    } @error {
+    <div>Error loading component</div>
+    }
+  </div>
+
+  <div>
+    <input type="checkbox" [(ngModel)]="customCondition" /> Check to load bar
+    chart @defer (when customCondition) {
+    <app-bar-chart></app-bar-chart>
+    } @placeholder {
+    <app-placeholder [type]="'barChart'"
+      >Chart will load upon custom condition</app-placeholder
+    >
+    } @loading {
+    <app-loading></app-loading>
+    } @error {
+    <div>Error loading component</div>
+    }
+  </div>
+</section>
