@@ -1,7 +1,8 @@
 <h1>TODOS</h1>
 
+<input type="text" [(ngModel)]="searchText" (input)="handleInput($event)" />
 <ul>
-  <li *ngFor="let todo of todos">
+  <li *ngFor="let todo of visibleTodos">
     <div>
       <b>{{ todo.id }}</b>: {{ todo.title }}
       <input type="checkbox" [checked]="todo.completed" />
